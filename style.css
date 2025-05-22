@@ -2,13 +2,13 @@
 .menu-hidden {
   display: none;
       position: fixed; /* Div будет "прилипать" к экрану */
-    z-index: 99; Максимальное значение z-индекса
+    z-index: 99; 
     top: 0; /* Опционально: разместить div в верхней части окна браузера */
     width: 100%;
 
 }
 .i{
-    z-index: 999;
+    z-index: 9999;
 }
 /* Открытое меню */
 .menu-visible {
