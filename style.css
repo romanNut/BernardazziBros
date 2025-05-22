@@ -1,0 +1,64 @@
+/* Скрытое меню по умолчанию */
+.menu-hidden {
+  display: none;
+}
+
+/* Открытое меню */
+.menu-visible {
+  display: block;
+}
+.mobile-menu{
+    display: none;
+}
+.hero-h1{
+    margin-right: 40px;
+}
+
+.guide{
+
+}
+#guide-intro,
+#guide-history,
+#guide-architecture,
+#guide-objects,
+#guide-tips {
+  scroll-margin-top: 80px; /* высота смещения */
+}
+#guide-history{
+  scroll-margin-top: 80px; /* высота смещения */
+}
+
+.about-photo-jovanni{
+    width: 182px;
+    height: 288px;
+}
+
+.map{
+    height: 20%;
+}
+
+.routes-lergal{
+    background-image: url(./images/лермонтовская-галерея.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -40px;
+}
+.routes-cvetnic{
+        background-image: url(./images/цветник.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.routes-arfa{
+        background-image: url(./images/арфа.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 30%;
+
+}
+
+
+
+.lergal1{
+    height: 315px;
+}
+

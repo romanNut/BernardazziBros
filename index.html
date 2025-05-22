@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Братья Бернардацци - Архитектурное наследие Пятигорска</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="/"><img src="./images/герб-пятигорск.png" alt="Герб Пятигорска" class="h-12 mr-3"></a>
+                <a href="/"><h1 class="text-xl font-bold text-blue-800">Братья Бернардацци</h1></a>
+                
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="text-gray-700 hover:text-blue-600 transition">О братьях</a>
+                <a href="#map" class="text-gray-700 hover:text-blue-600 transition">Карта</a>
+                <a href="#routes" class="text-gray-700 hover:text-blue-600 transition">Маршруты</a>
+                <a href="#guide" class="text-gray-700 hover:text-blue-600 transition">Путеводитель</a>
+                <a href="#gallery" class="text-gray-700 hover:text-blue-600 transition">Галерея</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                <i class="fas fa-bars text-2xl" id="i"></i>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:active bg-white py-2 px-4 shadow-lg menu-hidden">
+            <a href="#about" class="block py-2 text-gray-700 hover:text-blue-600">О братьях</a>
+            <a href="#map" class="block py-2 text-gray-700 hover:text-blue-600">Карта</a>
+            <a href="#routes" class="block py-2 text-gray-700 hover:text-blue-600">Маршруты</a>
+            <a href="#guide" class="block py-2 text-gray-700 hover:text-blue-600">Путеводитель</a>
+            <a href="#gallery" class="block py-2 text-gray-700 hover:text-blue-600">Галерея</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero bg-blue-900 text-white py-16">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0 hero-h1">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 ">Архитектурное наследие братьев Бернардацци</h1>
+                <p class="text-xl mb-6">Откройте для себя шедевры архитектуры Пятигорска, созданные талантливыми братьями Бернардацци в XIX веке</p>
+                <a href="#map" class="bg-white text-blue-900 px-6 py-3 rounded-lg font-medium hover:bg-blue-100 transition inline-block">Начать экскурсию</a>
+            </div>
+            <div class="md:w-1/2">
+                <img src="./images/братья-бернардацци.jpeg" alt="Братья Бернардацци" class="rounded-lg shadow-x1 hero-photo">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-800">Братья Бернардацци</h2>
+            <div class="flex flex-col md:flex-row items-center mb-12">
+                <div class="md:w-1/3 mb-8 md:mb-0">
+                    <img src="./images/джузеппе-бернардацци.webp" alt="Джузеппе Бернардацци" class="rounded-lg shadow-md mx-auto">
+                    <h3 class="text-xl font-semibold text-center mt-4">Джузеппе Бернардацци</h3>
+                    <p class="text-center text-gray-600">1788—1840</p>
+                </div>
+                <div class="md:w-1/3 px-0 md:px-8">
+                    <p class="text-lg mb-6 text-gray-700">Братья Джузеппе и Джованни Бернардацци — швейцарские архитекторы, внесшие огромный вклад в развитие архитектуры Пятигорска и всего Кавказского региона в первой половине XIX века.</p>
+                    <p class="text-lg mb-6 text-gray-700">Прибыв в Россию по приглашению императора Александра I, они создали множество архитектурных шедевров, которые до сих пор украшают Пятигорск.</p>
+                </div>
+                <div class="md:w-1/3 mb-8 md:mb-0">
+                    <img src="./images/джованни-бернардацци.jpg" alt="Джованни Бернардацци" class="rounded-lg shadow-md mx-auto about-photo-jovanni">
+                    <h3 class="text-xl font-semibold text-center mt-4">Джованни Бернардацци</h3>
+                    <p class="text-center text-gray-600">1782—1842</p>
+                </div>
+            </div>
+            <div class="bg-blue-50 p-6 rounded-lg">
+                <h3 class="text-xl font-semibold mb-4 text-blue-800 ">Их вклад в архитектуру Пятигорска:</h3>
+                <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                        <span>Создание архитектурного ансамбля центра Пятигорска</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                        <span>Проектирование и строительство Лермонтовской галереи</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                        <span>Создание Емануелевского парка</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                        <span>Проектирование здания Ресторации</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                        <span>Строительство грота Дианы и других парковых сооружений</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                        <span>Разработка генерального плана застройки Пятигорска</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-800">Карта архитектурных объектов</h2>
+            <div class="bg-white p-4 rounded-lg shadow-md ">
+                <img src="./images/карта.jpeg" alt="">
+            </div>
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-700">Лермонтовская галерея</h3>
+                    <p class="text-gray-600 mb-4">Построена в 1901 году на месте, где раньше находился павильон, спроектированный Бернардацци.</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-map-marker-alt mr-2"></i>
+                        <span>Парк Цветник</span>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-700">Грот Дианы</h3>
+                    <p class="text-gray-600 mb-4">Романтический грот, построенный в 1831 году по проекту братьев Бернардацци.</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-map-marker-alt mr-2"></i>
+                        <span>Парк Цветник</span>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-700">Здание Ресторации</h3>
+                    <p class="text-gray-600 mb-4">Построено в 1825 году, сейчас здесь находится Институт курортологии.</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-map-marker-alt mr-2"></i>
+                        <span>ул. Кирова, 30</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Routes Section -->
+    <section id="routes" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-800">Экскурсионные маршруты</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="route-card bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+                    <div class="h-48 bg-blue-800 flex items-center justify-center routes-lergal"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-blue-800">Классический маршрут</h3>
+                        <p class="text-gray-600 mb-4">2-часовая экскурсия по основным объектам в центре Пятигорска.</p>
+                        <ul class="mb-4 space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Лермонтовская галерея</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Грот Дианы</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Здание Ресторации</span>
+                            </li>
+                        </ul>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500"><i class="fas fa-clock mr-1"></i> 2 часа</span>
+                            <span class="text-sm text-gray-500"><i class="fas fa-walking mr-1"></i> 3 км</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="route-card bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+                    <div class="h-48 bg-blue-800 flex items-center justify-center routes-cvetnic">
+                        <!-- <i class="fas fa-mountain text-white text-6xl"></i> -->
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-blue-800">Парковый маршрут</h3>
+                        <p class="text-gray-600 mb-4">3-часовая прогулка по паркам и садам, созданным Бернардацци.</p>
+                        <ul class="mb-4 space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Емануелевский парк</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Парк Цветник</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Академическая галерея</span>
+                            </li>
+                        </ul>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500"><i class="fas fa-clock mr-1"></i> 3 часа</span>
+                            <span class="text-sm text-gray-500"><i class="fas fa-walking mr-1"></i> 5 км</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="route-card bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+                    <div class="h-48 bg-blue-800 flex items-center justify-center routes-arfa">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-blue-800">Полный маршрут</h3>
+                        <p class="text-gray-600 mb-4">5-часовая экскурсия по всем значимым объектам Бернардацци в Пятигорске.</p>
+                        <ul class="mb-4 space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Все объекты классического маршрута</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Дом архитекторов</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Михайловская галерея</span>
+                            </li>
+                        </ul>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500"><i class="fas fa-clock mr-1"></i> 5 часов</span>
+                            <span class="text-sm text-gray-500"><i class="fas fa-walking mr-1"></i> 8 км</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guide Section -->
+    <section id="guide" class="py-16 bg-gray-100 guide">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-800">Путеводитель</h2>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-4">
+                    <div class="lg:col-span-1 bg-blue-800 text-white p-6">
+                        <h3 class="text-xl font-semibold mb-4">Содержание</h3>
+                        <ul class="space-y-2 guide-nav">
+                            <li><a href="#guide-intro"  class="block py-2 px-3 rounded hover:bg-blue-700 transition ">Введение</a></li>
+                            <li><a href="#guide-history" class="block py-2 px-3 rounded hover:bg-blue-700 transition">Исторический контекст</a></li>
+                            <li><a href="#guide-architecture" class="block py-2 px-3 rounded hover:bg-blue-700 transition">Архитектурные особенности</a></li>
+                            <li><a href="#guide-objects" class="block py-2 px-3 rounded hover:bg-blue-700 transition">Основные объекты</a></li>
+                            <li><a href="#guide-tips" class="block py-2 px-3 rounded hover:bg-blue-700 transition">Советы туристам</a></li>
+                        </ul>
+                    </div>
+
+                    
+                    <div class="lg:col-span-3 p-10 pt-20 ">
+                        <div id="guide-intro" class="mb-12 guide-section anchor-offset">
+                            <h3 class="text-2xl font-semibold mb-4 text-blue-800 ">Введение</h3>
+                            <p class="mb-4 text-gray-700">Братья Бернардацци — Джузеппе и Джованни — оставили неизгладимый след в архитектурном облике Пятигорска. Прибыв в Россию из Швейцарии в начале XIX века, они стали главными архитекторами Кавказских Минеральных Вод и создали множество сооружений, которые сегодня являются визитной карточкой города.</p>
+                            <p class="text-gray-700">Этот путеводитель поможет вам познакомиться с их наследием и спланировать самостоятельную экскурсию по самым значимым местам.</p>
+                        </div>
+                        
+                        <div id="guide-history" class="mb-12 guide-section">
+                            <h3 class="text-2xl font-semibold mb-4 text-blue-800">Исторический контекст</h3>
+                            <p class="mb-4 text-gray-700">Братья Бернардацци прибыли в Россию в 1822 году по приглашению генерала А.П. Ермолова, который занимался обустройством Кавказского региона. Их задачей было создание архитектурного ансамбля нового курортного города — Пятигорска.</p>
+                            <p class="mb-4 text-gray-700">За время своей работы (1822-1856) братья создали генеральный план города, спроектировали и построили множество общественных зданий, парков, галерей и лечебных учреждений, которые определили архитектурный облик Пятигорска на десятилетия вперед.</p>
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2 text-blue-700">Интересный факт:</h4>
+                                <p class="text-gray-700">Братья Бернардацци не только проектировали здания, но и лично участвовали в их строительстве, обучая местных мастеров европейским строительным технологиям.</p>
+                            </div>
+                        </div>
+                        
+                        <div id="guide-architecture" class="mb-12 guide-section">
+                            <h3 class="text-2xl font-semibold mb-4 text-blue-800">Архитектурные особенности</h3>
+                            <p class="mb-4 text-gray-700">Архитектура Бернардацци сочетает в себе элементы классицизма с местными традициями и учетом специфики курортного города. Основные черты их стиля:</p>
+                            <ul class="list-disc pl-5 mb-4 space-y-2 text-gray-700">
+                                <li>Строгие классические пропорции зданий</li>
+                                <li>Использование местного камня - песчаника</li>
+                                <li>Обязательное наличие колоннад и портиков</li>
+                                <li>Интеграция зданий в природный ландшафт</li>
+                                <li>Функциональность и удобство для курортников</li>
+                            </ul>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <img src="./images/грот-дианы.jpg" alt="Грот Дианы" class="rounded-lg">
+                                <img src="./images/лермонтовская-галерея1.jpg" alt="Лермонтовская галерея" class="rounded-lg">
+                            </div>
+                        </div>
+                        
+                        <div id="guide-objects" class="mb-12 guide-section">
+                            <h3 class="text-2xl font-semibold mb-4 text-blue-800">Основные объекты</h3>
+                            <div class="space-y-8">
+                                <div>
+                                    <h4 class="text-xl font-semibold mb-2 text-blue-700">1. Лермонтовская галерея</h4>
+                                    <p class="mb-3 text-gray-700">Хотя современное здание галереи построено позже, оно стоит на месте оригинального павильона Бернардацци. Это одно из самых живописных мест в Пятигорске, связанное с именем М.Ю. Лермонтова.</p>
+                                    <p class="text-gray-700"><strong>Совет:</strong> Обязательно поднимитесь на смотровую площадку галереи, откуда открывается прекрасный вид на город и Эльбрус.</p>
+                                </div>
+                                
+                                <div>
+                                    <h4 class="text-xl font-semibold mb-2 text-blue-700">2. Грот Дианы</h4>
+                                    <p class="mb-3 text-gray-700">Романтический грот, построенный в 1831 году в честь первого восхождения на Эльбрус экспедиции генерала Емануеля. Назван в честь древнеримской богини охоты.</p>
+                                    <p class="text-gray-700"><strong>Интересно:</strong> Именно здесь в 1841 году, за несколько дней до дуэли, М.Ю. Лермонтов организовал бал для местного общества.</p>
+                                </div>
+                                
+                                <div>
+                                    <h4 class="text-xl font-semibold mb-2 text-blue-700">3. Здание Ресторации</h4>
+                                    <p class="mb-3 text-gray-700">Построено в 1828 году как главное курортное здание с рестораном, гостиницей и залами для отдыха. Сейчас здесь находится Институт курортологии.</p>
+                                    <p class="text-gray-700"><strong>Архитектура:</strong> Яркий пример классицизма с мощным восьмиколонным портиком и строгими формами.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="guide-tips" class="guide-section">
+                            <h3 class="text-2xl font-semibold mb-4 text-blue-800">Советы туристам</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-blue-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold mb-2 text-blue-700"><i class="fas fa-sun mr-2"></i>Лучшее время для посещения</h4>
+                                    <p class="text-gray-700">Апрель-октябрь — идеальные месяцы для осмотра архитектурных объектов. Летом можно совместить экскурсию с купанием в озерах, весной и осенью — насладиться цветущими парками.</p>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold mb-2 text-blue-700"><i class="fas fa-utensils mr-2"></i>Где поесть</h4>
+                                    <p class="text-gray-700">Рекомендуем кафе "Пироговъ" рядом с Парком Цветник или ресторан "Бернардацци" с видом на Лермонтовскую галерею.</p>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold mb-2 text-blue-700"><i class="fas fa-walking mr-2"></i>Передвижение</h4>
+                                    <p class="text-gray-700">Большинство объектов находятся в пешей доступности друг от друга. Для дальних точек можно воспользоваться местными маршрутками или такси.</p>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold mb-2 text-blue-700"><i class="fas fa-camera mr-2"></i>Фотосоветы</h4>
+                                    <p class="text-gray-700">Лучшие кадры Лермонтовской галереи получаются утром, а Грот Дианы особенно живописен на закате. Не забудьте широкоугольный объектив!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-800">Галерея</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md hover:shadow-xl transition cursor-pointer">
+                    <img src="./images/грот-дианы1.jpg" alt="Грот Дианы" class="w-full h-48 object-cover transition transform hover:scale-105">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-blue-800">Грот Дианы</h3>
+                        <p class="text-sm text-gray-600">Построен в 1831 году</p>
+                    </div>
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md hover:shadow-xl transition cursor-pointer">
+                    <img src="./images/лермонтовская-галерея2.jpg" alt="Лермонтовская галерея" class="w-full h-48 object-cover transition transform hover:scale-105">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-blue-800">Лермонтовская галерея</h3>
+                        <p class="text-sm text-gray-600">Место оригинального павильона Бернардацци</p>
+                    </div>
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md hover:shadow-xl transition cursor-pointer">
+                    <img src="./images/ресторация.jpg" alt="Здание Ресторации" class="w-full h-48 object-cover transition transform hover:scale-105">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-blue-800">Здание Ресторации</h3>
+                        <p class="text-sm text-gray-600">1828 год, ныне Институт курортологии</p>
+                    </div>
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md hover:shadow-xl transition cursor-pointer">
+                    <img src="./images/умануелевский.jpg" alt="Емануелевский парк" class="w-full h-48 object-cover transition transform hover:scale-105">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-blue-800">Емануелевский парк</h3>
+                        <p class="text-sm text-gray-600">Создан по проекту Бернардацци</p>
+                    </div>
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md hover:shadow-xl transition cursor-pointer">
+                    <img src="./images/михайловская.jpg" alt="Михайловская галерея" class="w-full h-48 object-cover transition transform hover:scale-105">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-blue-800">Михайловская галерея</h3>
+                        <p class="text-sm text-gray-600">Одна из первых галерей курорта</p>
+                    </div>
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md hover:shadow-xl transition cursor-pointer">
+                    <img src="./images/академическая.jpg" alt="Академическая галерея" class="w-full h-48 object-cover transition transform hover:scale-105">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-blue-800">Академическая галерея</h3>
+                        <p class="text-sm text-gray-600">Построена по проекту Бернардацци</p>
+                    </div>
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md hover:shadow-xl transition cursor-pointer">
+                    <img src="./images/дом.jpg" alt="Дом архитекторов" class="w-full h-48 object-cover transition transform hover:scale-105">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-blue-800">Дом архитекторов</h3>
+                        <p class="text-sm text-gray-600">Жилой дом, построенный Бернардацци</p>
+                    </div>
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md hover:shadow-xl transition cursor-pointer">
+                    <img src="./images/пятигорск19в.jpg" alt="Пятигорск XIX века" class="w-full h-48 object-cover transition transform hover:scale-105">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-blue-800">Пятигорск XIX века</h3>
+                        <p class="text-sm text-gray-600">Гравюра с видом города времен Бернардацци</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for gallery -->
+    <!-- <div id="gallery-modal" class="fixed inset-0 bg-black bg-opacity-100 z-50 hidden flex items-center justify-center p-4">
+        <div class="relative w-full max-w-4xl">
+            <button id="close-modal" class="absolute -top-12 right-0 text-white text-3xl hover:text-gray-300">&times;</button>
+            <img id="modal-image" src="" alt="" class="w-full rounded-lg">
+            <div class="mt-4 text-white text-center">
+                <h3 id="modal-title" class="text-xl font-semibold"></h3>
+                <p id="modal-description" class="text-gray-300"></p>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Братья Бернардацци</h3>
+                    <p>Архитектурное наследие Пятигорска</p>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="https://vk.com/public201211436" target='_blank'  class="text-white hover:text-blue-200"><i class="fab fa-vk text-2xl"></i></a>
+                        <a href="t.me/plekhanov_university" target='_blank' class="text-white hover:text-blue-200"><i class="fab fa-telegram text-2xl"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Контакты</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>г. Пятигорск, ул. Кучуры, 8</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2"></i>
+                            <span>+7 (8793) 38-12-58</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>pyatigorsk​@rea.ru​</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Полезные ссылки</h3>
+                    <ul class="space-y-2">
+                        <li><a href="https://pyatigorsk.gosuslugi.ru/"  target='_blank' class="hover:text-blue-200 transition">Официальный сайт Пятигорска</a></li>
+                        <li><a href="https://lermontovdomik.ru/"  target='_blank' class="hover:text-blue-200 transition">Музей-заповедник М.Ю. Лермонтова</a></li>
+                        <li><a href="https://stav-geo.ru/tourism/"  target='_blank' class="hover:text-blue-200 transition">Туристический портал Ставрополья</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-blue-800 mt-8 pt-6 text-center text-blue-100">
+                <p>&copy; 2023 Архитектурное наследие братьев Бернардацци. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
