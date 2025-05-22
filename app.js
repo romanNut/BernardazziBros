@@ -27,3 +27,8 @@ function toggleMenu() {
 
 // Обработчик события
 burgerBtn.addEventListener('click', toggleMenu);
+
+
+document.getElementById('scrollButton0').addEventListener('click', function() {
+  document.querySelector('.hero').scrollIntoView({ behavior: 'smooth' });
+});
