@@ -1,10 +1,3 @@
-// function myFunction() {
-//     document.getElementById('mobile-menu').style.cssText = 'md:active bg-white py-2 px-4 shadow-lg';
-// }
-// document.getElementById('i').addEventListener('click', () => {
-//   document.getElementById('mobile-menu').classList.add('myClass');
-
-// }); 
 
 // Получаем элементы
 const burgerBtn = document.getElementById('mobile-menu-button');
