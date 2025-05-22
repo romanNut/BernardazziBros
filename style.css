@@ -1,23 +1,29 @@
 /* Скрытое меню по умолчанию */
 .menu-hidden {
   display: none;
-}
 
+}
+.i{
+    z-index: 999;
+}
 /* Открытое меню */
 .menu-visible {
   display: block;
-  z-index: 2000;
+    position: fixed; /* Div будет "прилипать" к экрану */
+    z-index: 99; Максимальное значение z-индекса
+    top: 0; /* Опционально: разместить div в верхней части окна браузера */
+    width: 100%;
+
 }
 .mobile-menu{
     display: none;
+
 }
 .hero-h1{
     margin-right: 40px;
 }
 
-.guide{
 
-}
 #guide-intro,
 #guide-history,
 #guide-architecture,
