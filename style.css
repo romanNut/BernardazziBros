@@ -6,6 +6,7 @@
 /* Открытое меню */
 .menu-visible {
   display: block;
+  z-index: 100;
 }
 .mobile-menu{
     display: none;
